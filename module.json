@@ -1,0 +1,16 @@
+{
+    "name": "macro-runner",
+    "title": "Macro runner",
+    "description": "Runs certain macros when the game loads.",
+    "author": "thenkles",
+    "version": "1.0.0",
+    "minimumCoreVersion": "0.7.9",
+    "dependencies": [
+        {
+            "name": "macro-folders"
+        }
+    ],
+    "esmodules": [
+        "scripts/main.js"
+    ]
+}
