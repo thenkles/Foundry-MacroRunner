@@ -23,6 +23,16 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - uses: JesseTG/rm@v1.0.0
+        with:
+          # The file path to remove
+          path: .git
+          
+      - uses: JesseTG/rm@v1.0.0
+        with:
+          # The file path to remove
+          path: .github
+
       - uses: actions/upload-artifact@v1
         with:
           name: latest
