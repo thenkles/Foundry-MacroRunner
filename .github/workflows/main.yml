@@ -74,15 +74,15 @@ jobs:
         uses: deef0000dragon1/json-edit-action/@v1
         env:
           KEY: download
-          VALUE: ${{ steps.gitversion.outputs.semVer }}
-          FILE: https://github.com/thenkles/Foundry-MacroRunner/releases/download/${{ steps.gitversion.outputs.semVer }}/MacroRunner-${{ steps.gitversion.outputs.semVer }}.zip
+          VALUE: https://github.com/thenkles/Foundry-MacroRunner/releases/download/${{ steps.gitversion.outputs.semVer }}/MacroRunner-${{ steps.gitversion.outputs.semVer }}.zip
+          FILE: module.json
 
       - name: Set manifest URL
         uses: deef0000dragon1/json-edit-action/@v1
         env:
           KEY: manifest
-          VALUE: ${{ steps.gitversion.outputs.semVer }}
-          FILE: https://github.com/thenkles/Foundry-MacroRunner/releases/download/${{ steps.gitversion.outputs.semVer }}/module.json
+          VALUE: https://github.com/thenkles/Foundry-MacroRunner/releases/download/${{ steps.gitversion.outputs.semVer }}/module.json
+          FILE: module.json
           
       - name: Zip files
         uses: vimtor/action-zip@v1
