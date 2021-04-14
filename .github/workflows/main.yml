@@ -38,15 +38,17 @@ jobs:
           name: latest
           path: ${{ github.workspace }}
 
-      - uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      - uses: nickatnight/releases-action@v2
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body: |
-            Changes in this Release
-            - First Change
-            - Second Change
-          draft: false
-          prerelease: false
+          # Name of branch to release from
+          branch: main
+          # Name of the release
+          name: Release name
+          # Message for the release
+          message: Release message
+          # Draft or naw?
+          #draft: # optional, default is false
+          # Pre-release or naw
+          #prerelease: # optional, default is false
+          # Name of tag
+          #tag: # optional
