@@ -57,6 +57,11 @@ jobs:
         uses: JesseTG/rm@v1.0.0
         with:
           path: .github
+          
+      - name: Remove GitVersion.yml
+        uses: JesseTG/rm@v1.0.0
+        with:
+          path: GitVersion.yml
 
       - name: Set version
         uses: deef0000dragon1/json-edit-action/@v1
