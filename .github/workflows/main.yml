@@ -53,4 +53,4 @@ jobs:
           # Pre-release or naw
           #prerelease: # optional, default is false
           # Name of tag
-          #tag: # optional
+          tag: v1.1
