@@ -64,4 +64,4 @@ jobs:
         with:
           token: ${{ github.token }}
           tag: ${{ steps.gitversion.outputs.semVer }}
-          assets: ${{ steps.gitversion.outputs.semVer }}.zip
+          assets: *.zip
