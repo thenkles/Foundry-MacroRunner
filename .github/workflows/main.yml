@@ -38,24 +38,37 @@ jobs:
           name: latest
           path: ${{ github.workspace }}
 
-      - uses: nickatnight/releases-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-        with:
+      #- uses: nickatnight/releases-action@v2
+        #env:
+          #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        #with:
           # Name of branch to release from
-          branch: main
+          #branch: main
           # Name of the release
-          name: Release name
+          #name: Release name
           # Message for the release
-          message: Release message
+          #message: Release message
           # Draft or naw?
           #draft: # optional, default is false
           # Pre-release or naw
           #prerelease: # optional, default is false
           # Name of tag
-          tag: v1.1.1
+          #tag: v1.1.1
           
-      - uses: actions/upload-release-asset@v1
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+          
+      - name: Upload Release Asset
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
