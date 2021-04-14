@@ -12,5 +12,8 @@
     ],
     "esmodules": [
         "scripts/main.js"
-    ]
+    ],
+    "url": "https://github.com/thenkles/Foundry-MacroRunner",
+    "manifest": "",
+    "download": ""
 }

@@ -69,18 +69,29 @@ jobs:
           KEY: version
           VALUE: ${{ steps.gitversion.outputs.semVer }}
           FILE: module.json
+
+      - name: Set download URL
+        uses: deef0000dragon1/json-edit-action/@v1
+        env:
+          KEY: download
+          VALUE: ${{ steps.gitversion.outputs.semVer }}
+          FILE: https://github.com/thenkles/Foundry-MacroRunner/releases/download/${{ steps.gitversion.outputs.semVer }}/MacroRunner-${{ steps.gitversion.outputs.semVer }}.zip
+
+      - name: Set manifest URL
+        uses: deef0000dragon1/json-edit-action/@v1
+        env:
+          KEY: manifest
+          VALUE: ${{ steps.gitversion.outputs.semVer }}
+          FILE: https://github.com/thenkles/Foundry-MacroRunner/releases/download/${{ steps.gitversion.outputs.semVer }}/module.json
           
       - name: Zip files
         uses: vimtor/action-zip@v1
         with:
           files: ./
-          # Name of output zip file
           dest: MacroRunner-${{ steps.gitversion.outputs.semVer }}.zip
-          # Whether to add subdirectories to simply zip all files to the root
           recursive: true
     
-      - name: Upload Release Asset
-        id: upload-release-asset 
+      - name: Upload zipped files
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -90,5 +101,12 @@ jobs:
           asset_name: MacroRunner-${{ steps.gitversion.outputs.semVer }}.zip
           asset_content_type: application/zip
 
-      - name: Test
-        run: echo "${{ steps.create_release.outputs.upload_url }}"
+      - name: Upload manifest
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: module.json
+          asset_name: module.json
+          asset_content_type: application/json
