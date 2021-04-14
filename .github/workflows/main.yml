@@ -48,6 +48,16 @@ jobs:
           draft: false
           prerelease: false
           
+      - name: Remove .git folder
+        uses: JesseTG/rm@v1.0.0
+        with:
+          path: .git
+          
+      - name: Remove .github folder
+        uses: JesseTG/rm@v1.0.0
+        with:
+          path: .github
+          
       - name: Upload Release Asset
         id: upload-release-asset 
         uses: actions/upload-release-asset@v1
@@ -59,9 +69,3 @@ jobs:
           asset_name: module.json
           asset_content_type: application/zip
 
-      - name: Delete old release assets
-        uses: mknejp/delete-release-assets@v1
-        with:
-          token: ${{ github.token }}
-          tag: ${{ steps.gitversion.outputs.semVer }}
-          assets: '*.zip'
