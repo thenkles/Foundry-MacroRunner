@@ -63,9 +63,9 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ steps.gitversion.outputs.semVer }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ VERSION }}
+          tag_name: ${{ steps.gitversion.outputs.semVer }}
           release_name: Release ${{ steps.gitversion.outputs.semVer }}
           draft: false
           prerelease: false
