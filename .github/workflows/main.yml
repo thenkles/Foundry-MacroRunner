@@ -23,15 +23,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - uses: JesseTG/rm@v1.0.0
-        with:
+      #- uses: JesseTG/rm@v1.0.0
+        #with:
           # The file path to remove
-          path: .git
+          #path: .git
           
-      - uses: JesseTG/rm@v1.0.0
-        with:
+      #- uses: JesseTG/rm@v1.0.0
+        #with:
           # The file path to remove
-          path: .github
+          #path: .github
 
       - name: Install GitVersion
         uses: gittools/actions/gitversion/setup@v0.9.7
